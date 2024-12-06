@@ -1,0 +1,32 @@
+using System.IO;
+using Aspose.Words;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Extensions.Logging;
+
+public static class DotxToPdfConverter
+{
+    [FunctionName("DotxToPdfConverter")]
+    public static void Run(
+        [BlobTrigger("input/{name}", Connection = "AzureWebJobsStorage")] Stream inputBlob,
+        string name,
+        [Blob("output/{name}.pdf", FileAccess.Write, Connection = "AzureWebJobsStorage")] Stream outputBlob,
+        ILogger log)
+    {
+        log.LogInformation($"Processing file: {name}");
+
+        try
+        {
+            // Load the .dotx document
+            Document document = new Document(inputBlob);
+
+            // Save as PDF
+            document.Save(outputBlob, SaveFormat.Pdf);
+
+            log.LogInformation($"Successfully converted {name} to PDF.");
+        }
+        catch (Exception ex)
+        {
+            log.LogError($"Error processing file {name}: {ex.Message}");
+        }
+    }
+}
