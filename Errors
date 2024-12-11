@@ -1,0 +1,16 @@
+
+[2024-12-11T08:21:27.138Z] Microsoft.Azure.WebJobs.Host: Error indexing method 'Functions.ConvertDotxToPdf'. Microsoft.Azure.WebJobs.Extensions.Storage.Blobs: Storage account connection string 'AzureWebJobsDefaultEndpointsProtocol=https;AccountName=transpstorage;AccountKey;EndpointSuffix=core.windows.net' does not exist. Make sure that it is a defined App Setting.
+[2024-12-11T08:21:27.222Z] Error indexing method 'Functions.ConvertDotxToPdf'
+[2024-12-11T08:21:27.228Z] Microsoft.Azure.WebJobs.Host: Error indexing method 'Functions.ConvertDotxToPdf'. Microsoft.Azure.WebJobs.Extensions.Storage.Blobs: Storage account connection string 'AzureWebJobsDefaultEndpointsProtocol=https;AccountName=transpstorage;AccountKey;EndpointSuffix=core.windows.net' does not exist. Make sure that it is a defined App Setting.
+[2024-12-11T08:21:27.230Z] Function 'Functions.ConvertDotxToPdf' failed indexing and will be disabled.
+[2024-12-11T08:21:27.235Z] No job functions found. Try making your job classes and methods public. If you're using binding extensions (e.g. Azure Storage, ServiceBus, Timers, etc.) make sure you've called the registration method for the extension(s) in your startup code (e.g. builder.AddAzureStorage(), builder.AddServiceBus(), builder.AddTimers(), etc.).
+[2024-12-11T08:21:27.283Z] The 'ConvertDotxToPdf' function is in error: Microsoft.Azure.WebJobs.Host: Error indexing method 'Functions.ConvertDotxToPdf'. Microsoft.Azure.WebJobs.Extensions.Storage.Blobs: Storage account connection string 'AzureWebJobsDefaultEndpointsProtocol=https;AccountName=transpstorage;AccountKey;EndpointSuffix=core.windows.net' does not exist. Make sure that it is a defined App Setting.
+
+Functions:
+
+        ConvertDotxToPdf: blobTrigger
+
+For detailed output, run func with --verbose flag.
+[2024-12-11T08:21:32.188Z] Host lock lease acquired by instance ID '000000000000000000000000BDA1FBF4'.
+
+******************************************************************************************************************************************************
