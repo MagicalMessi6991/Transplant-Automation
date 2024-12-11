@@ -1,0 +1,26 @@
+{
+  "type": "ApiConnection",
+  "inputs": {
+    "host": {
+      "connection": {
+        "referenceName": "azureblob"
+      }
+    },
+    "method": "get",
+    "path": "/v2/datasets/@{encodeURIComponent(encodeURIComponent('AccountNameFromSettings'))}/triggers/batch/onupdatedfile",
+    "queries": {
+      "folderId": "JTJmaW5wdXQtZG90eA==",
+      "maxFileCount": 10,
+      "checkBothCreatedAndModifiedDateTime": false
+    }
+  },
+  "recurrence": {
+    "interval": 10,
+    "frequency": "Minute"
+  },
+  "splitOn": "@triggerBody()",
+  "metadata": {
+    "JTJmdWhvLXRlc3QtY29udGFpbmVy": "/uho-test-container",
+    "JTJmaW5wdXQtZG90eA==": "/input-dotx"
+  }
+}
