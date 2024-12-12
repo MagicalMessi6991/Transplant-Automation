@@ -1,0 +1,18 @@
+{
+  "bindings": [
+    {
+      "name": "myblob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "input-dotx/{name}",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "outputBlob",
+      "type": "blob",
+      "direction": "out",
+      "path": "output-dotx/{name}.pdf",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
