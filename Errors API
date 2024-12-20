@@ -1,0 +1,16 @@
+     1>Done executing task "MSBuild" -- FAILED.
+     1>Done building target "_FilterRestoreGraphProjectInputItems" in project "CDM.sln" -- FAILED.
+     1>Done Building Project "F:\Build\agent1\_work\8496\s\CaseScreener\CDM.sln" (Restore target(s)) -- FAILED.
+
+Build FAILED.
+
+       "F:\Build\agent1\_work\8496\s\CaseScreener\CDM.sln" (Restore target) (1) ->
+       (_FilterRestoreGraphProjectInputItems target) -> 
+         C:\Program Files\dotnet\sdk\8.0.206\NuGet.targets(414,5): error MSB3202: The project file "F:\Build\agent1\_work\8496\s\CaseScreener\CommunityCare.csproj" was not found. [F:\Build\agent1\_work\8496\s\CaseScreener\CDM.sln]
+
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.01
+##[error]Error: The process 'C:\Program Files\dotnet\dotnet.exe' failed with exit code 1
+##[error]Packages failed to restore
