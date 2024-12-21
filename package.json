@@ -1,0 +1,60 @@
+{
+  "name": "Dental-Appeal-Triage-ETS-Case-Creation",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "products/*"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "upgrade": "abyss vers @abyss",
+    "lint": "abyss run lint",
+    "dev": "abyss run dev",
+    "api": "npm run dev --prefix=products/api",
+    "web": "npm run dev --prefix=products/web",
+    "workshop": "npm run dev --prefix=products/workshop"
+  },
+  "dependencies": {
+    "@abyss/core": "^1.54.0",
+    "@react-pdf-viewer/core": "^3.12.0",
+    "@react-pdf-viewer/default-layout": "^3.12.0",
+    "@react-pdf/renderer": "^3.4.4",
+    "@reduxjs/toolkit": "^2.2.1",
+    "@types/react-beautiful-dnd": "^13.1.8",
+    "dotenv": "^16.4.5",
+    "html2pdf.js": "^0.10.1",
+    "immutability-helper": "^3.1.1",
+    "jwt-decode": "^4.0.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1",
+    "oidc-client-ts": "^3.0.1",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^3.11.174",
+    "react": "18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-bootstrap": "^2.10.4",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1",
+    "react-doc-viewer": "^0.1.14",
+    "react-dom": "18.2.0",
+    "react-icons": "^5.3.0",
+    "react-loader-spinner": "^6.1.6",
+    "react-oidc-context": "^3.1.0",
+    "react-pdf": "^7.7.3",
+    "react-quill": "^2.0.0",
+    "react-router-dom": "^6.26.2",
+    "react-toastify": "^10.0.5",
+    "redux": "^5.0.1",
+    "redux-persist": "^6.0.0",
+    "sweetalert2": "^11.12.4"
+  },
+  "devDependencies": {
+    "@types/node": "18.7.18",
+    "@types/react": "18.0.20",
+    "@types/react-dom": "18.0.6",
+    "eslint": "7.32.0",
+    "typescript": "4.7.4"
+  }
+}
