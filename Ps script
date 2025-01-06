@@ -1,0 +1,12 @@
+# Generate a unique backup name using a timestamp
+BACKUP_NAME=$(date +"%Y%m%d%H%M%S")-backup
+
+# Trigger the Web App backup
+az webapp config backup create \
+  --resource-group $RESOURCE_GROUP \
+  --webapp-name $WEB_APP_NAME \
+  --backup-name $BACKUP_NAME \
+  --container-url "$CONTAINER_URL"
+
+# Output the backup name for tracking
+echo "Backup created successfully: $BACKUP_NAME"
