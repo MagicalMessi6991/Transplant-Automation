@@ -1,0 +1,35 @@
+# Generate a unique backup name with a timestamp
+BACKUP_NAME=$(date +"%Y%m%d%H%M%S")-backup.zip
+
+# Trigger the backup directly using Azure CLI
+echo "Triggering backup for Web App..."
+BACKUP_FILE_PATH="/home/site/backups/$BACKUP_NAME"
+
+az webapp create-backup \
+  --name $WEB_APP_NAME \
+  --resource-group $RESOURCE_GROUP \
+  --backup-path $BACKUP_FILE_PATH \
+  --query "path" -o tsv > backup-path.txt
+
+# Verify if the backup was created
+if [ ! -s backup-path.txt ]; then
+    echo "Backup creation failed. Exiting."
+    exit 1
+fi
+
+BACKUP_DOWNLOAD_URL=$(cat backup-path.txt)
+echo "Backup URL: $BACKUP_DOWNLOAD_URL"
+
+# Download the backup file to the agent
+curl -o $BACKUP_NAME "$BACKUP_DOWNLOAD_URL"
+
+# Verify the downloaded file
+if [ -f "$BACKUP_NAME" ]; then
+    echo "Backup downloaded successfully: $BACKUP_NAME"
+else
+    echo "Backup download failed."
+    exit 1
+fi
+
+# Publish the backup file as an artifact
+echo "##vso[artifact.upload containerfolder=backups;artifactname=webapp-backup]$BACKUP_NAME"
