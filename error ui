@@ -1,0 +1,26 @@
+##[debug]Agent environment resources - Disk: F:\ Available 1053841.00 MB out of 1535981.00 MB, Memory: Used 9581.00 MB out of 32767.00 MB, CPU: Usage 13.45%
+npm verbose cli E:\Programs\nodejs\node.exe E:\Programs\nodejs\node_modules\npm\bin\npm-cli.js
+npm info using npm@10.8.1
+npm info using node@v20.16.0
+npm info config found workspace root at F:\Build\agent1\_work\8510\s
+npm verbose title npm run build
+npm verbose argv "run" "build"
+npm verbose logfile logs-max:10 dir:C:\Users\tfsbuild\AppData\Local\npm-cache\_logs\2025-01-08T12_32_11_260Z-
+npm verbose logfile C:\Users\tfsbuild\AppData\Local\npm-cache\_logs\2025-01-08T12_32_11_260Z-debug-0.log
+Failed to compile.
+
+./src/Components/CommonUI/CustomTabs.jsx
+Module not found: Can't resolve '@src/Properties'
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./src/Pages/ClaimsPreview/ClaimsPreview.jsx
+./src/routes/Routes.tsx
+./src/routes/index.ts
+./src/browser.tsx
+./pages/index.js
+
+
+./src/Components/CommonUI/TabsComponent.jsx
+Module not found: Can't resolve '@src/Properties'
