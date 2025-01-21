@@ -4,13 +4,16 @@ $artifactPath = "$(System.DefaultWorkingDirectory)\TRAITS Build"
 # Define the folder to exclude
 $excludeFolder = "config"
 
-# Build the path to the folder
-$excludePath = Join-Path -Path $artifactPath -ChildPath $excludeFolder
+# Get all directories recursively in the artifact path
+$excludePaths = Get-ChildItem -Path $artifactPath -Recurse -Directory | Where-Object { $_.Name -eq $excludeFolder }
 
-# Remove the folder
-if (Test-Path $excludePath) {
-    Remove-Item -Recurse -Force $excludePath
-    Write-Host "Excluded folder: $excludeFolder"
+# Check if any matching folder(s) were found
+if ($excludePaths) {
+    foreach ($excludePath in $excludePaths) {
+        # Remove the folder
+        Remove-Item -Recurse -Force $excludePath.FullName
+        Write-Host "Excluded folder: $($excludePath.FullName)"
+    }
 } else {
-    Write-Host "Folder $excludeFolder not found, nothing to exclude."
+    Write-Host "No folder named '$excludeFolder' found, nothing to exclude."
 }
