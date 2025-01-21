@@ -1,0 +1,16 @@
+# Define the path to the artifact directory
+$artifactPath = "$(System.DefaultWorkingDirectory)\TRAITS Build"
+
+# Define the folder to exclude
+$excludeFolder = "config"
+
+# Build the path to the folder
+$excludePath = Join-Path -Path $artifactPath -ChildPath $excludeFolder
+
+# Remove the folder
+if (Test-Path $excludePath) {
+    Remove-Item -Recurse -Force $excludePath
+    Write-Host "Excluded folder: $excludeFolder"
+} else {
+    Write-Host "Folder $excludeFolder not found, nothing to exclude."
+}
