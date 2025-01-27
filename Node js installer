@@ -1,0 +1,23 @@
+# Define the Node.js version
+$NodeVersion = "v22.6.0"
+
+# Set the download URL for Windows 64-bit
+$NodeUrl = "https://nodejs.org/dist/$NodeVersion/node-$NodeVersion-x64.msi"
+
+# Set the local path to save the installer
+$InstallerPath = "$env:TEMP\node-$NodeVersion-x64.msi"
+
+# Download the Node.js MSI installer
+Write-Host "Downloading Node.js $NodeVersion..."
+Invoke-WebRequest -Uri $NodeUrl -OutFile $InstallerPath -UseBasicParsing
+
+# Install Node.js silently
+Write-Host "Installing Node.js $NodeVersion..."
+Start-Process msiexec.exe -ArgumentList "/i `"$InstallerPath`" /quiet /norestart" -NoNewWindow -Wait
+
+# Verify the installation
+Write-Host "Verifying Node.js installation..."
+node -v
+npm -v
+
+Write-Host "Node.js $NodeVersion installation completed!"
