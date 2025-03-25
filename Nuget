@@ -1,0 +1,11 @@
+# Define the path to download NuGet.exe
+$nugetPath = "$(Build.SourcesDirectory)\nuget.exe"
+
+# Download NuGet.exe if it doesn't exist
+if (!(Test-Path $nugetPath)) {
+    Invoke-WebRequest -Uri "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe" -OutFile $nugetPath
+}
+
+# Add NuGet.exe to the PATH for this session
+$env:Path += ";$(Build.SourcesDirectory)"
+Write-Host "NuGet downloaded and added to PATH."
