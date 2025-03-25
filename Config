@@ -1,0 +1,15 @@
+$configPath = "$(Build.SourcesDirectory)\NuGet.config"
+
+@"
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="OptumNuGet" value="http://optumnugetgallery.optum.com/api/v2" />
+  </packageSources>
+  <config>
+    <add key="allowInsecureConnections" value="true" />
+  </config>
+</configuration>
+"@ | Out-File -Encoding utf8 -FilePath $configPath
+
+Write-Host "✅ NuGet.config file created successfully at $configPath"
