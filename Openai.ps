@@ -1,0 +1,50 @@
+# Set variables (update these values to match your setup)
+$location = "eastus"
+$resourceGroupName = "your-resource-group-name"
+$openAIAccountName = "myopenaiaccount001"  # Must be globally unique
+$vnetName = "your-vnet-name"
+$subnetName = "your-subnet-name"
+$privateEndpointName = "openaiPrivateEndpoint"
+$privateDnsZoneGroupName = "default"
+$skuName = "S0"
+
+# Get existing VNet and subnet
+$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
+
+# Deploy Azure OpenAI Cognitive Services
+$openAI = New-AzCognitiveServicesAccount `
+  -ResourceGroupName $resourceGroupName `
+  -Name $openAIAccountName `
+  -Location $location `
+  -SkuName $skuName `
+  -Kind OpenAI `
+  -Type "Microsoft.CognitiveServices/accounts" `
+  -EnablePublicNetworkAccess $false
+
+# Create Private Endpoint for OpenAI
+$openAIResourceId = $openAI.Id
+
+$peConnection = @{
+  Name = $privateEndpointName
+  ResourceGroupName = $resourceGroupName
+  Location = $location
+  Subnet = $subnet
+  PrivateLinkServiceConnection = @(
+    New-AzPrivateLinkServiceConnection `
+      -Name "openaiLink" `
+      -PrivateLinkServiceId $openAIResourceId `
+      -GroupId "account"
+  )
+}
+
+$privateEndpoint = New-AzPrivateEndpoint @peConnection
+
+# Create Private DNS Zone Group (optional but recommended for name resolution)
+New-AzPrivateDnsZoneGroup `
+  -ResourceGroupName $resourceGroupName `
+  -PrivateEndpointName $privateEndpointName `
+  -Name $privateDnsZoneGroupName `
+  -PrivateDnsZoneConfig @(
+    New-AzPrivateDnsZoneConfig -Name "config" -PrivateDnsZoneId "/subscriptions/<subscription-id>/resourceGroups/<dns-rg>/providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com"
+  )
