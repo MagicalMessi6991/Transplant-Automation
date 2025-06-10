@@ -1,0 +1,27 @@
+echo "✅ Starting script..."
+
+# Step 1: Activate the Python virtual environment
+echo "🔁 Activating virtual environment..."
+source /app1/indops_env/IndOps_API/Market_Conduct_API/mce_api_venv/bin/activate
+
+# Step 2: Check if gpt_main.py is running
+echo "🔍 Checking if 'gpt_main.py' is running..."
+PID=$(ps -ef | grep gpt_main.py | grep -v grep | awk '{print $2}')
+
+if [ -n "$PID" ]; then
+    echo "⚠️ Process found with PID: $PID"
+    echo "🛑 Killing existing process..."
+    kill -9 $PID
+    echo "✅ Process killed."
+else
+    echo "✅ No existing process found. Proceeding to start new one."
+fi
+
+# Step 3: (Optional) Replace source code
+# Assuming you've already used a previous task to copy your files to /app1/indops_env/IndOps_API/GPT_Wrap_API/
+
+# Step 4: Start the Python API in background
+echo "🚀 Starting the Python API..."
+nohup python /app1/indops_env/IndOps_API/GPT_Wrap_API/gpt_main.py > /tmp/gpt_api.log 2>&1 &
+
+echo "✅ Deployment completed successfully."
