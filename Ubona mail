@@ -1,0 +1,26 @@
+This is to update you that I have successfully completed all the tasks outlined in the Ubona deployment PDF provided. Below is a summary of the actions taken:
+
+⸻
+
+✅ Tasks Completed:
+	•	Provisioned a VM using the Red Hat Enterprise Linux 9.6 (LVM) base image.
+	•	Configured the VM with:
+	•	Username: optumadmin
+	•	SSH authentication via public key
+	•	Disk layout checked and verified using df -h command
+	•	Performed the pre-configuration assessment as instructed.
+	•	Verified that the filesystem usage, mount points, and current disk sizes were consistent with expectations.
+
+⸻
+
+⚠️ Key Differences from the SOP Document:
+	1.	Region Used:
+	•	The VM was created in Central US instead of East US, due to a policy restriction (ubona-allowedregions) that prevents deployment in East US.
+	•	This change was necessary to comply with organizational governance policies.
+	2.	Network Access (SSH):
+	•	A Bastion Host was deployed to enable secure SSH access to the VM, since direct internet traffic over port 22 is disallowed by policy.
+	•	SSH to the VM was successfully tested through the Bastion host using the optumadmin user.
+
+⸻
+
+Please let me know if any further verification or additional steps are needed on my end.
