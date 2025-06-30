@@ -1,0 +1,11 @@
+our environment, and part of that involves installing several required packages. As per the guidelines in the INC, I have already raised a request on SNOW.
+
+However, we are facing a blocker — our VM environment does not have direct internet access, and many of the required packages are not available in the existing JFrog repositories. This is preventing us from proceeding with the installation through standard shell scripts or package managers.
+
+To resolve this, I’d like to check:
+	1.	If we can create a dedicated JFrog repository for storing all the required packages for our deployment.
+	2.	If there’s a specific team that can help us download the missing packages from the internet and upload them to JFrog, since we’re unable to do so directly.
+
+This would help us streamline the process and ensure we can proceed without further delays.
+
+Looking forward to your guidance.
