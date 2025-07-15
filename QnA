@@ -1,0 +1,20 @@
+	2.	How you are trying to download from External Repo, is there Cloudflare available in the Azure Ingress path
+– We are downloading packages directly using apt or wget from the Nexus repository URL. No Cloudflare or Azure Front Door is involved.
+	3.	Which is the source website from which packages will be downloaded
+– Nexus repository hosted by our Ubuntu vendor: [Provide exact domain URL here].
+	4.	Is it one time exercise or regular activity
+– This is part of a POC setup; expected to be a one-time or occasional activity as per need.
+	5.	What is your Azure setup where this download will be done
+– Azure Linux VM hosted in a private subnet with outbound internet via Azure Firewall.
+	6.	Have you approached Optum Artifactory team to support in these downloads
+– Yes, but required packages are not available in Optum Artifactory. Hence, vendor-provided Nexus is used.
+	7.	What kind of data will be downloaded, any PHI, PII protected kind of data expected to download
+– No PHI or PII data involved. Only open-source Linux packages and dependencies are being downloaded.
+	8.	What is the kind of encryption used both in transit and at rest
+– HTTPS (TLS 1.2+) is used for secure download in transit. No data is stored at rest on the repository side.
+	9.	Whether request is initiated from the Azure setup to 3rd party external site or 3rd party will push the data
+– Request is initiated from Azure Linux VM to the external Nexus repository via HTTPS.
+	10.	Is there any authentication involved in this transaction, if yes, what is that and whether MFA is integrated into that
+– Currently, basic auth is used for accessing Nexus repo. MFA is not applicable for machine-level access.
+	11.	Is Azure setup in Optum HCC environment only?
+– Yes, the Azure setup is hosted entirely within Optum’s HCC environment.
