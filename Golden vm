@@ -1,0 +1,7 @@
+Hi [Manager’s Name],
+
+I’ve configured the Linux VM as a base image with the necessary packages, including darmontools, microsoft-prod, node exporter, and the RHEL base OS. This VM is now ready to be used as a golden image.
+
+The Ubona team will be connecting with us shortly to install Terraform and share their deployment code. I’ll coordinate with them and keep you posted on the progress.
+
+Please let me know if you’d like me to prepare any documentation or snapshots for reference.
